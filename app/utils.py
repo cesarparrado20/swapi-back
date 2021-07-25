@@ -6,8 +6,8 @@ def generic_model_mutation_process(model, data, id=None, commit=True):
 
     :param model: clase del modelo del cual se va a generar la instancia
     :param data: información de los campos a modificar en la instancia
-    :param id: identificador del registro a actualizar (solamente para actualización)
-    :param commit: boleano que especifica si los cambios se guardaran en la base de datos
+    :param id: id del registro a actualizar (solo para actualización)
+    :param commit: boleano que especifica si se guardara en la base de datos
     :return: una instancia del modelo con la información actualizada
     """
     if id:

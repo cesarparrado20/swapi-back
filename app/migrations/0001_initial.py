@@ -7,7 +7,6 @@ import model_utils.fields
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,7 +16,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Director',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128)),
             ],
             options={
@@ -27,12 +27,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Planet',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
+                ('created', model_utils.fields.AutoCreatedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='modified')),
                 ('name', models.CharField(max_length=128)),
-                ('rotation_period', models.CharField(blank=True, max_length=40)),
-                ('orbital_period', models.CharField(blank=True, max_length=40)),
+                ('rotation_period',
+                 models.CharField(blank=True, max_length=40)),
+                ('orbital_period',
+                 models.CharField(blank=True, max_length=40)),
                 ('diameter', models.CharField(blank=True, max_length=40)),
                 ('climate', models.CharField(blank=True, max_length=40)),
                 ('gravity', models.CharField(blank=True, max_length=40)),
@@ -47,7 +54,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Producer',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128)),
             ],
             options={
@@ -57,9 +65,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='People',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
+                ('created', model_utils.fields.AutoCreatedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='modified')),
                 ('name', models.CharField(max_length=128)),
                 ('height', models.CharField(blank=True, max_length=16)),
                 ('mass', models.CharField(blank=True, max_length=16)),
@@ -67,8 +80,14 @@ class Migration(migrations.Migration):
                 ('skin_color', models.CharField(blank=True, max_length=32)),
                 ('eye_color', models.CharField(blank=True, max_length=32)),
                 ('birth_year', models.CharField(blank=True, max_length=16)),
-                ('gender', models.CharField(choices=[('male', 'Male'), ('female', 'Female'), ('hermaphrodite', 'Hermaphrodite'), ('n/a', 'N/A')], max_length=64)),
-                ('home_world', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='inhabitants', to='app.Planet')),
+                ('gender', models.CharField(
+                    choices=[('male', 'Male'), ('female', 'Female'),
+                             ('hermaphrodite', 'Hermaphrodite'),
+                             ('n/a', 'N/A')], max_length=64)),
+                ('home_world',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='inhabitants',
+                                   to='app.Planet')),
             ],
             options={
                 'verbose_name_plural': 'people',
@@ -78,17 +97,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Film',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                                        serialize=False, verbose_name='ID')),
+                ('created', model_utils.fields.AutoCreatedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='created')),
+                ('modified', model_utils.fields.AutoLastModifiedField(
+                    default=django.utils.timezone.now, editable=False,
+                    verbose_name='modified')),
                 ('title', models.CharField(max_length=100)),
                 ('episode_id', models.PositiveSmallIntegerField()),
                 ('opening_crawl', models.TextField(max_length=1000)),
                 ('release_date', models.DateField()),
-                ('characters', models.ManyToManyField(blank=True, related_name='films', to='app.People')),
-                ('director', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='films', to='app.Director')),
-                ('planets', models.ManyToManyField(blank=True, related_name='films', to='app.Planet')),
-                ('producer', models.ManyToManyField(related_name='films', to='app.Producer')),
+                ('characters',
+                 models.ManyToManyField(blank=True, related_name='films',
+                                        to='app.People')),
+                ('director',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='films', to='app.Director')),
+                ('planets',
+                 models.ManyToManyField(blank=True, related_name='films',
+                                        to='app.Planet')),
+                ('producer', models.ManyToManyField(related_name='films',
+                                                    to='app.Producer')),
             ],
             options={
                 'db_table': 'film',
