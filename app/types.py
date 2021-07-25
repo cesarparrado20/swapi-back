@@ -23,7 +23,7 @@ class PeopleType(DjangoObjectType):
             'name': ['iexact', 'icontains', 'contains', 'exact'],
             'gender': ['exact']
         }
-        convert_choices_to_enum = False
+        convert_choices_to_enum = ['gender']
 
 
 class DirectorType(DjangoObjectType):
