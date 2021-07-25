@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:10
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    env_file: .env
+
+  django:
+    build: .
+    command: gunicorn -b :8000 -w 3 swapi.wsgi:application --reload --timeout 3600
+    volumes:
+      - .:/usr/src/app
+    env_file: .env
+    depends_on:
+      - postgres
+
+  nginx:
+    image: nginx:1.17-alpine
+    volumes:
+      - ./static:/static
+      - ./media:/media
+      - ./nginx/pro.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - django
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    ports:
+      - "80:80"
