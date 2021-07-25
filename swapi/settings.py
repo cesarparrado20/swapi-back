@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load env variables
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'Please-generate-a-private key')  # TODO: Generar un key seguro
+SECRET_KEY = os.getenv(
+    'SECRET_KEY', '+y6bxh9b)msc$6@k))6f@p^-ely9k#nfqcoidncb2#knf%%!@l'
+)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']  # TODO: dejar solo la URL donde va a estar disponible
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
