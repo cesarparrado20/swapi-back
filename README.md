@@ -1,34 +1,31 @@
 # SW API GraphQL
 
 ## Requirements
-* [Python](https://www.python.org/) (realizado en python 3.8)
-* [Django](https://github.com/django/django)
-* [Django Filter](https://github.com/carltongibson/django-filter)
-* [Django model utils](https://github.com/jazzband/django-model-utils)
-* [Graphene](https://github.com/graphql-python/graphene-django)
-* [.EVN](https://github.com/theskumar/python-dotenv)
+* [Docker](https://www.python.org/)
+* [Docker Compose](https://docs.docker.com/engine/)
+* [.EVN](https://docs.docker.com/compose/)
 
 ## Setup
 
 Clone the project
 ```
-git clone https://github.com/gustav0/swapi.git
+git clone https://github.com/cesarparrado20/swapi-back.git
 ```
 
-Move into de repo and install dependencies
+Create and build services
 ```
-pip install -r requirements.txt
+docker-compose build
 ```
 
 Run migrations and load fixtures
 ```
-python manage.py migrate
-python manage.py load_fixtures
+docker-compose run --rm django ./manage.py migrate
+docker-compose run --rm django ./manage.py load_fixtures
 ```
 
 ### Running the server
 ```
-python manage.py runserver
+docker-compose up
 ```
 If you want to check it out, access the graphi explorer here: `127.0.0.1:8000/explore`.
 
@@ -36,5 +33,9 @@ The service should be available in the URL: `127.0.0.1:8000/graphql`.
 
 ### Runing the tests
 ```
-python manage.py test
+docker-compose run --rm django ./manage.py test
 ```
+
+## Testing environment
+
+You can test the project online at the following URL: `134.209.66.134/graphql`
