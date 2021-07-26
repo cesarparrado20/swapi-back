@@ -31,9 +31,14 @@ If you want to check it out, access the graphi explorer here: `127.0.0.1:8000/ex
 
 The service should be available in the URL: `127.0.0.1:8000/graphql`.
 
-### Runing the tests
+### Running the tests
 ```
 docker-compose run --rm django ./manage.py test
+```
+
+### Running the logic exercises
+```
+docker-compose run --rm django python logic_exercises.py
 ```
 
 ## Testing environment
