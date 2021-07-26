@@ -12,6 +12,19 @@ Clone the project
 git clone https://github.com/cesarparrado20/swapi-back.git
 ```
 
+Example .env
+```
+SECRET_KEY=g-d^%97w4jgu_+2fzo&io3^tqq71315vv8kv80%%_xm#aqx38g
+TZ=America/Bogota
+DJANGO_SETTINGS_MODULE=swapi.settings.development
+
+POSTGRES_DB=example-db
+POSTGRES_USER=example-user
+POSTGRES_PASSWORD=example-pass
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+```
+
 Create and build services
 ```
 docker-compose build
