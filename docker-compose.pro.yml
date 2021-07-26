@@ -18,8 +18,8 @@ services:
   nginx:
     image: nginx:1.17-alpine
     volumes:
-      - ./static:/static
-      - ./media:/media
+      - ./swapi/static:/static
+      - ./swapi/media:/media
       - ./nginx/pro.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - django
